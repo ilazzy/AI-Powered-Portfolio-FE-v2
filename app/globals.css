@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* react-timeline-vertical-component line color */
+html {
+  --line-color: #e5e7eb;
+}
+
+/* react-timeline-vertical-component line color (dark mode) */
+html.dark {
+  --line-color: rgba(255, 255, 255, 0.2);
+}
+
+/* border black */
+.borderBlack {
+  @apply border border-black/10;
+}
+
+/* Hide reCAPTCHA v2 badge */
+/* .grecaptcha-badge {
+  @apply invisible;
+} */
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff, 0 0 15px #2bff00;
+    color: #fff;
+  }
+  50% {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #ff00ff, 0 0 30px #00ffff;
+    color: #fff;
+  }
+  100% {
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ff0d, 0 0 15px #ff00ff;
+    color: #fff;
+  }
+}
+
+.glow-text {
+  animation: glow 2s infinite ease-in-out;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 640px) {
+  .header-nav {
+    bottom: 11rem; /* Move the header 1rem upwards on mobile screens */
+  }
+}
+
+@layer utilities {
+  .glow-motion-icon {
+    position: relative;
+    display: inline-block;
+    z-index: 0;
+    background-image: url("/sparkle.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .glow-motion-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    background-size: 600%;
+    animation: icon-glow-move 2.2s linear infinite;
+    mask-image: url("/sparkle.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-image: url("/sparkle.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    z-index: -1;
+  }
+
+  @keyframes icon-glow-move {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 0%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+}
