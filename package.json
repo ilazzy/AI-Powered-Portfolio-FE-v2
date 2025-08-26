@@ -9,9 +9,9 @@
     "type": "git",
     "url": ""
   },
-  "homepage": "https://github.com/XXXX/portfolio#readme",
+  "homepage": "https://github.com/ilazzy/AI-Powered-Portfolio-FE-v2#readme",
   "bugs": {
-    "url": "https://github.com/XXXX/portfolio/issues"
+    "url": "https://github.com/ilazzy/AI-Powered-Portfolio-FE-v2/issues"
   },
   "scripts": {
     "dev": "next dev -p 3000 --turbopack",

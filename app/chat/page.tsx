@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { SendHorizontal } from "lucide-react";
 
 interface Message {
@@ -96,6 +96,10 @@ export default function ChatPage() {
     });
   }
 
+  const userId = useMemo(() => {
+    return "user-" + Math.random().toString(36).substring(2, 14);
+  }, []);
+
   const handleApiCall = async (prompt: string, aiMessageId: string) => {
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL, {
@@ -105,7 +109,7 @@ export default function ChatPage() {
         },
         body: JSON.stringify({
           message: prompt,
-          sender: "user", // Replace with actual user ID if available
+          sender: userId,
         }),
       });
 
