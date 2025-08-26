@@ -32,7 +32,7 @@ const About = () => {
         using Node.js, where I’ve since gained{" "}
         <b className="font-high">three years of hands-on experience</b> building
         and maintaining server-side applications. Alongside my development work,
-        I’ve developed a strong interest in cybersecurity—particularly in
+        I’ve developed a strong interest in cybersecurity—particularly in{" "}
         <b className="font-high">API Penetration and Black-box testing</b>. I
         regularly conduct black-box testing and responsibly report my findings,
         which has led to recognition and appreciation from relevant teams and

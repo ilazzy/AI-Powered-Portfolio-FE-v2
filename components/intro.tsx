@@ -68,8 +68,11 @@ const Intro = () => {
       >
         <b className="font-bold">Hi, I&apos;m {OWNER_NAME}.</b> I&apos;m a{" "}
         <b className="font-bold">Backend developer</b> with{" "}
-        <b className="font-bold">3+ years</b> of experience. I enjoy building{" "}
-        <i className="italic">sites and apps.</i>
+        <b className="font-bold">3+ years</b> of experience.{" "}
+        <span className="mt-6 block">
+          I love building solid backend systems and breaking others just to see
+          how they work{" "}
+        </span>
         <span className="mt-6 block">
           My focus is Nodejs (with a growing interest in security and AI
           implementation)
