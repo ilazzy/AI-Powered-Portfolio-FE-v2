@@ -15,11 +15,18 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [predictions, setPredictions] = useState<string[]>([]);
 
   const starterPrompts = [
     "What certifications does he hold?",
     "Is Syed aware of security when creating APIs?",
     "He good at Data Structures & Algorithms (DSA)?",
+    "Has Syed Ahamed worked on AI-driven projects?",
+  ];
+
+  const prediction = [
+    "What certifications does he hold?",
+    "Is Syed aware of security when creating APIs?",
     "Has Syed Ahamed worked on AI-driven projects?",
   ];
 
@@ -102,10 +109,13 @@ export default function ChatPage() {
 
   const handleApiCall = async (prompt: string, aiMessageId: string) => {
     try {
+      // hide predictions before new query sent to AI
+      setPredictions([]);
       const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-forwarded-for": "0.0.0.0",
         },
         body: JSON.stringify({
           message: prompt,
@@ -144,6 +154,11 @@ export default function ChatPage() {
           )
         );
       }
+
+      // setTimeout(() => {
+      // once the text are streamed, then show the predictions
+      setPredictions(prediction);
+      // }, 2500);
     } catch (error) {
       console.error("API call failed:", error);
       setMessages((prevMessages) =>
@@ -238,11 +253,29 @@ export default function ChatPage() {
         </div>
       </div>
 
+      {/* Prediction slider */}
+      {messages.length > 0 && predictions.length > 0 && (
+        <div className="flex justify-center bg-gray-900 border-t border-gray-800">
+          <div className="prediction-slider w-full lg:w-3/5 flex overflow-x-auto space-x-2 py-2 px-4">
+            {predictions.map((item, index) => (
+              <button
+                key={index}
+                className="flex-shrink-0 bg-gray-800 border border-gray-700 rounded-2xl px-4 py-2 text-white hover:bg-gray-700 transition-colors duration-200"
+                onClick={() => setInputMessage(item)}
+              >
+                <span className="shiny-text">{item}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Input area aligned with chat width */}
+      {/* Input area */}
       <div className="flex justify-center p-4 lg:p-6 bg-gray-900 border-t border-gray-800">
         <form
           onSubmit={handleSendMessage}
-          className="w-full lg:w-3/5 flex items-center space-x-4"
+          className="w-full lg:w-3/5 flex items-center space-x-4 relative"
         >
           <div className="relative flex-1">
             <input

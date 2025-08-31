@@ -104,3 +104,44 @@ html.dark {
     }
   }
 }
+
+/* .animate-icon-glow {
+  animation: icon-glow-move 2.2s linear infinite;
+} */
+
+.prediction-slider {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.prediction-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.shiny-text {
+  color: #a5a5a5ea; /* fallback color */
+  background: linear-gradient(
+    120deg,
+    #a5a5a5ea 30%,
+    #ffffff 60%,
+    #a5a5a5ea 70%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.shiny-text.disabled {
+  animation: none;
+}
