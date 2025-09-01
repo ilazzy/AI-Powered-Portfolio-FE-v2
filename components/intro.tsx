@@ -22,7 +22,7 @@ const Intro = () => {
     <section
       ref={ref}
       id="home"
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem] pt-28 sm:pt-36"
+      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem] pt-20 sm:pt-36"
     >
       <div className="flex items-center justify-center">
         <div className="relative">

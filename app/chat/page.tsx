@@ -168,7 +168,7 @@ export default function ChatPage() {
         <div className="flex items-center space-x-2">
           <span className="glow-motion-icon w-10 h-10 inline-block"></span>
           {/* <img src="/sparkle.svg" alt="Sparkle" className="mr-1 h-10 w-10" /> */}
-          <span className="text-3xl font-bold">Amicia 4.0</span>
+          <span className="text-3xl font-bold">Amicia 1.0</span>
         </div>
       </div>
 
