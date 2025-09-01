@@ -111,17 +111,20 @@ export default function ChatPage() {
     try {
       // hide predictions before new query sent to AI
       setPredictions([]);
-      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-forwarded-for": "0.0.0.0",
-        },
-        body: JSON.stringify({
-          message: prompt,
-          sender: userId,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/chat`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-forwarded-for": "0.0.0.0",
+          },
+          body: JSON.stringify({
+            message: prompt,
+            sender: userId,
+          }),
+        }
+      );
 
       if (!response.ok) {
         if (response.status === 429) {
