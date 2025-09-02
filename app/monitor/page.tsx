@@ -27,7 +27,7 @@ const MessageDisplay = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3001/user-list-secret?page=${currentPage}&limit=10&passcode=${code}`
+        `https://syed-ahamed-portfolio-be.onrender.com/user-list-secret?page=${currentPage}&limit=10&passcode=${code}`
       );
       const data = await response.json();
 
