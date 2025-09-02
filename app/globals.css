@@ -104,3 +104,69 @@ html.dark {
     }
   }
 }
+
+.message-container {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.tab-button.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.messages {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.message {
+  margin-bottom: 15px;
+}
+
+.message p {
+  margin: 5px 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.pagination-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
