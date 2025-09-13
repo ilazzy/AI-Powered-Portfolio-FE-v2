@@ -35,7 +35,7 @@ const Intro = () => {
             }}
           >
             <Image
-              src="/syed-ahamed.jpg"
+              src="/syed-ahamed.png"
               alt={`${OWNER_NAME.split(" ")[0]} portrait`}
               width={192}
               height={192}
