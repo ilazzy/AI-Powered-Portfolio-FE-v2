@@ -1,6 +1,7 @@
 // Import necessary dependencies and components.
 "use client"; // This comment indicates that this code should run on the client side in Next.js.
 
+import { useEffect } from "react";
 import { EXTRA_LINKS, OWNER_NAME } from "@/constants";
 import { useSectionInView } from "@/lib/hooks";
 import { BsLinkedin } from "react-icons/bs";
@@ -15,6 +16,21 @@ import Link from "next/link";
 const Intro = () => {
   // Use the 'useSectionInView' hook to track section visibility.
   const { ref } = useSectionInView("Home", 0.5);
+
+  // Call the /visitor API when the component mounts
+  useEffect(() => {
+    const callVisitorApi = async () => {
+      try {
+        await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/visitor", {
+          method: "GET",
+        });
+      } catch (error) {
+        console.error("Failed to call /visitor API:", error);
+      }
+    };
+    callVisitorApi();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
   // Use the 'useActiveSectionContext' to manage active sections and clicks.
   // const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 

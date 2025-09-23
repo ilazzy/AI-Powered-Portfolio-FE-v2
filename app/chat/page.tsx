@@ -102,16 +102,19 @@ export default function ChatPage() {
 
   const handleApiCall = async (prompt: string, aiMessageId: string) => {
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          message: prompt,
-          sender: userId,
-        }),
-      });
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: prompt,
+            sender: userId,
+          }),
+        }
+      );
 
       if (!response.ok) {
         if (response.status === 429) {

@@ -14,6 +14,7 @@ const MessageDisplay = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [visitorCount, setVisitorCount] = useState<number | null>(null); // State for visitor count
 
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
@@ -27,7 +28,8 @@ const MessageDisplay = () => {
 
     try {
       const response = await fetch(
-        `https://syed-ahamed-portfolio-be.onrender.com/user-list-secret?page=${currentPage}&limit=10&passcode=${code}`
+        process.env.NEXT_PUBLIC_BACKEND_URL +
+          `/user-list-secret?page=${currentPage}&limit=10&passcode=${code}`
       );
       const data = await response.json();
 
@@ -56,6 +58,26 @@ const MessageDisplay = () => {
       fetchMessages(page, passcode);
     }
   }, [page, isAuthorized]);
+
+  // Fetch visitor count when component mounts
+  useEffect(() => {
+    const fetchVisitorCount = async () => {
+      try {
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_BACKEND_URL + "/visitor-count"
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setVisitorCount(data.visits);
+        } else {
+          console.error("Failed to fetch visitor count:", response.statusText);
+        }
+      } catch (err) {
+        console.error("Error fetching visitor count:", err);
+      }
+    };
+    fetchVisitorCount();
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   const renderMessages = () => {
     if (!activeTab) {
@@ -147,6 +169,12 @@ const MessageDisplay = () => {
           Next
         </button>
       </div>
+
+      {visitorCount !== null && (
+        <div className="visitor-count">
+          <p>Total Visitors: {visitorCount}</p>
+        </div>
+      )}
     </div>
   );
 };
