@@ -57,7 +57,7 @@ const Intro = () => {
               height={192}
               quality={95}
               priority={true}
-              className="h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
+              className="h-44 w-44 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
             />
           </motion.div>
 
@@ -84,15 +84,16 @@ const Intro = () => {
       >
         <b className="font-bold">Hi, I&apos;m {OWNER_NAME}.</b> I&apos;m a{" "}
         <b className="font-bold">Backend developer</b> with{" "}
-        <b className="font-bold">3+ years</b> of experience.{" "}
+        <b className="font-bold">3+ years</b> of experience. in building
+        reliable and high-performance backend systems.{" "}
         <span className="mt-6 block">
-          I love building solid backend systems and breaking others just to see
-          how they work{" "}
+          I specialize in Node.js and have a growing interest in security and
+          AI-driven solutions.{" "}
         </span>
-        <span className="mt-6 block">
+        {/* <span className="mt-6 block">
           My focus is Nodejs (with a growing interest in security and AI
           implementation)
-        </span>
+        </span> */}
       </motion.h1>
 
       <motion.div
